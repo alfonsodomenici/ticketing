@@ -15,7 +15,8 @@ def findUserById(id):
     return cursor.fetchone()
 
 def createUser(fname,lname,user,password,year):
-    q = "INSERT INTO tblusers (firstname,lastname,user,password,yearBirthDate) VALUES ('%s','%s','%s','%s',%s)" % (fname,lname,user,password,year)
+    q = "INSERT INTO tblusers (firstname,lastname,user,password,yearBirthDate) " 
+    q += "VALUES ('%s','%s','%s','%s',%s)" % (fname,lname,user,password,year)
     conn = mysql.connect()
     cursor = conn.cursor()
     cursor.execute(q)
@@ -24,8 +25,10 @@ def createUser(fname,lname,user,password,year):
     return findUserById(lastid) 
 
 def deleteUser(userId):
-    q = "delete from tblusers where idUser=" + str(userId)
+    qDelUser = "delete from tblusers where idUser=" + str(userId)
+    qDelUserTickets = " delete from tbltickets where idUser = " + str(userId)
     conn = mysql.connect()
     cursor = conn.cursor();
-    cursor.execute(q)
+    cursor.execute(qDelUserTickets)
+    cursor.execute(qDelUser)
     conn.commit()
