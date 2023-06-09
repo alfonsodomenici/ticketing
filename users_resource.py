@@ -16,9 +16,15 @@ def find(userId):
 
 @users_res.route('/users',methods=['POST'])
 def create():
-    (request.json)
-    return "vuoi creare un nuovo user"
+    fname = request.json['firstname']
+    lname = request.json['lastname']
+    user = request.json['user']
+    password = request.json['password']
+    year = request.json['yearBirthDate']
+    created = createUser(fname,lname,user,password,year)
+    return jsonify(created)
 
 @users_res.route('/users/<int:userId>',methods=['DELETE'])
 def delete(userId):
-    return "vuoi eliminare lo user con id:" + str(userId)
+    deleteUser(userId)
+    return Response(status=204)
