@@ -6,10 +6,10 @@ from users_resource import users_res
 app = Flask(__name__)
 
 #db configuration
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'root'
+app.config['MYSQL_DATABASE_USER'] = 'ticketing'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'ticketing'
 app.config['MYSQL_DATABASE_DB'] = 'dbticketing'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+app.config['MYSQL_DATABASE_HOST'] = '172.21.160.1'
 
 mysql.init_app(app)
 
